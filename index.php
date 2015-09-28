@@ -76,6 +76,32 @@
             </div>
         </div>
     </header>
+    
+    <!-- Button -->
+    <section class="success">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <button onclick="askJeannie()" type="button" class="btn btn-primary btn-lg">Ask Lady Liberty "How are you doing?"</button>
+                </div>
+            </div>
+            <div class="row">
+                <p class="text-center">
+                    <!--PHP call: next step is to try and split this into a separate file-->
+                    <?php
+                        $response = Unirest\Request::get("https://jeannie.p.mashape.com/api?input=how+are+you+doing&locale=en&location=53.0%2C9.0&page=1&timeZone=%2B120",
+                        array(
+                            "X-Mashape-Key" => "XtsevWZQWnmshJeFehr8Jirln9ayp1Qww8NjsnL1sTDXoZPfMT",
+                            "Accept" => "text/plain"
+                        )
+                        );
+                        
+                        echo $response;
+                    ?>
+                </p>
+            </div>
+        </div>
+    </section>
 
 
     <!-- About Section -->
@@ -107,6 +133,7 @@
                         <h3>Code Brothers</h3>
                         <p>A team of Liberty Mutual Employees from Indianapolis, IN</p>
                     </div>
+                    <div>
                         <h3>About Lady Liberty</h3>
                         <p>Lady Liberty is a prototype built for Ignite III to demonstrate the possibility of a computerized insurance assistant.</p>
                     </div>
@@ -148,6 +175,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
+   
 
 </body>
 
